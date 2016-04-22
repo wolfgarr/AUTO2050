@@ -4,9 +4,10 @@ public class fuzzycolors
 {
 	public static void main(String[] args)
 	{
-		boolean debug = false;
-		int[][] referenceColors = {{0,0,0},{255,0,0},{0,255,0},{0,0,255},{255,255,255},{127,127,127},{255,255,0},{0,255,255},{255,0,255},{255,127,0},{218,165,32},{140,70,20},{128,0,128}};
-		String[] referenceNames = {"black","red",    "green",  "blue",   "white",      "gray",      "yellow",   "cyan",     "magenta",  "orange",   "gold",      "brown",    "purple"};
+		boolean debug = false; // Change this to true to enable debug messages
+		
+		int[][] referenceColors = {{0,0,0},{255,0,0},{0,255,0},{0,0,255},{255,255,255},{127,127,127},{255,255,0},{0,255,255},{255,0,255},{255,127,0},{218,165,32},{140,70,20},{128,0,128}}; // reference table to check RGB codes for different colors
+		String[] referenceNames = {"black","red",    "green",  "blue",   "white",      "gray",      "yellow",   "cyan",     "magenta",  "orange",   "gold",      "brown",    "purple"}; // Names for the colors in the referenceColors array
 		Scanner in = new Scanner(System.in);
 		int[] rgb = new int[3];
 		
@@ -23,6 +24,7 @@ public class fuzzycolors
 			
 			for(int i = 0; i < referenceColors.length; i++)
 			{
+				// Comparing the color to the colors in the reference table using Pythagorean theorem
 				difference[i] = (int)Math.sqrt(((rgb[0] - referenceColors[i][0])*(rgb[0] - referenceColors[i][0])) + ((rgb[1] - referenceColors[i][1])*(rgb[1] - referenceColors[i][1])) + ((rgb[2] - referenceColors[i][2])*(rgb[2] - referenceColors[i][2])));
 				
 				if(debug)
@@ -30,6 +32,7 @@ public class fuzzycolors
 			}
 			
 			int minimumDifference = 0;
+			// Finding out which reference color is closest to the compared color
 			for(int i = 0; i < difference.length; i++)
 			{
 				if(difference[i] < difference[minimumDifference])
